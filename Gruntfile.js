@@ -27,9 +27,48 @@ module.exports = function (grunt) {
         }]
       }
     },
+    watch: {
+        options: {
+          livereload: true
+        },
+        scripts: {
+          files: ['<%= config.app %>/js/*.js', '<%= config.app %>/views/*.html'],
+          tasks: ['dist-mac'],
+          options: {
+              spawn: true
+          }
+        },
+        css: {
+          files: ['<%= config.app %>/css/*.css'],
+          tasks: ['dist-mac'] // convert from Stylus to css
+        }
+    },
+    stylus: {
+      build: {
+          linenos: true,
+          compress: false
+      },
+      files: [{
+          expand: true,
+          cwd: 'source',
+          src: ['<%= config.app %>/css/*.styl']
+      }]
+    },
+    exec: {
+        run_macos: {
+            command: 'cd dist && open Gifbox.app',
+            stdout: false,
+            stderr: true
+        }
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
+      },
+      ignore_warning: {
+          options: {
+              '-W060': true
+          }
       },
       files: '<%= config.app %>/js/*.js'
     },
@@ -233,12 +272,13 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('dist-mac', [
-    'jshint',
+//    'jshint',
     'clean:dist',
     'copy:webkit',
     'copy:appMacos',
     'rename:app',
-    'chmod'
+    'chmod',
+    'exec:run_macos'
   ]);
 
   grunt.registerTask('check', [

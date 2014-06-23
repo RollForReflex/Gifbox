@@ -2,8 +2,8 @@
     "node": true,
     "esnext": true,
     "bitwise": true,
-    "camelcase": true,
-    "curly": true,
+    "camelcase": false,
+    "curly": false,
     "eqeqeq": true,
     "immed": true,
     "indent": 4,
@@ -14,8 +14,19 @@
     "regexp": true,
     "undef": true,
     "unused": true,
-    "strict": true,
+    "strict": false,
     "trailing": true,
     "smarttabs": true,
-    "white": true
+    "white": true,
+    "evil": true,
+    "asi": true,
+    "boss": true,
+    "globalstrict": true,
+    "laxbreak": true,
+    "loopfunc": true,
+    "globals" : {
+        "$": false,
+        "jQuery": false,
+        "angular": false
+    }
 }

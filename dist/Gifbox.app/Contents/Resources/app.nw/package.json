@@ -5,11 +5,12 @@
   "single-instance": true,
   "window": {
     "title": "Gifbox",
-    "width": 650,
-    "height": 650,
+    "width": 800,
+    "height": 450,
     "min_width": 650,
     "min_height": 650,
     "toolbar": false
   },
-  "chromium-args": "--child-clean-exit"
+  "chromium-args": "--child-clean-exit",
+  "node-remote": "<local>"
 }
